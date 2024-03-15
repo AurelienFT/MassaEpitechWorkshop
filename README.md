@@ -23,7 +23,7 @@ npm run build
 
 Maintenant déployons ce premier smart contract sur le réseau builder de Massa appelé le : buildnet.
 
-Pour cela utilisez la clé privée fourni et placez là dans le fichier `contracts/.env`. Cette clé est reliée à une addresse déjà provisionnée pour vous permettre de payer les coûts de déploiement du contrat sur la chaine. Pour le déployer utilisez la commande :
+Pour cela utilisez la clé privée `S12TmaQPEhf68M6Mb4xfXodkYjMgWKBoXdV17cpomVMUoAnFPaxf` et placez là dans le fichier `contracts/.env`. Cette clé est reliée à une addresse déjà provisionnée pour vous permettre de payer les coûts de déploiement du contrat sur la chaine. Pour le déployer utilisez la commande :
 ```
 npm run deploy
 ```
@@ -45,7 +45,7 @@ Ajoutez la valeur 2 à la clé PRICE_KEY dans le stockage du smart-contract depu
 Pour convertir un nombre en bytes vous pouvez utiliser la fonction `u64ToBytes`.
 Pour interagir avec le stockage utilisez notre objet `Storage` documentation : https://as-sdk.docs.massa.net/modules/Storage.html
 
-Une fois que vous pensez avoir une version fonctionnelle rendez-vous sur : ... Entrez votre addresse et vous devriez voir le montant apparaitre après quelques secondes. Il est automatiquement récupéré sur la blockchain.
+Une fois que vous pensez avoir une version fonctionnelle rendez-vous sur : https://massa-epitech-workshop.vercel.app/ . Entrez votre addresse et vous devriez voir le montant apparaitre après quelques secondes. Il est automatiquement récupéré sur la blockchain.
 
 ### Étape 3 : Ajout de l'update du prix aléatoire de manière régulière
 
@@ -53,7 +53,7 @@ Changez le code de l'étape 2 pour que la fonction mette un prix aléatoire entr
 
 La fonction `updatePrice` peut être appelé de manière régulière automatiquement en ajoutant un appel à `sendFutureOperation()` à la fin de la fonction.
 
-Verifiez que votre contrat fonctionne bien en utilisant le site : ... et en attendant les refresh.
+Verifiez que votre contrat fonctionne bien en utilisant le site : https://massa-epitech-workshop.vercel.app/ et en attendant les refresh. Il devrait se mettre à jour toutes les 16 secondes
 
 ### La suite
 
