@@ -1,10 +1,5 @@
 import { useState, useEffect } from "react";
-import { IClient, ClientFactory, IEvent, bytesToStr } from "@massalabs/massa-web3";
-import { providers } from "@massalabs/wallet-provider";
-import { EventListener } from "./utils/pollEvent";
-
-const CONTRACT_ADDRESS =
-  "AS12cUgpyh56LW5xmDy7BA5xxKoyCoToRy919Fps8Uhcy8P3AEHoy";
+import { IClient, ClientFactory, bytesToStr, DefaultProviderUrls, CHAIN_ID } from "@massalabs/massa-web3";
 
 export default function AutonomousPriceInteraction() {
   const [scAddress, setSCAddress] = useState<string>("");
@@ -39,33 +34,7 @@ export default function AutonomousPriceInteraction() {
   async function initProvider() {
     setErrorMessage("");
 
-    const allProviders = await providers();
-
-    if (!allProviders || allProviders.length === 0) {
-      throw new Error("No providers available");
-    }
-
-    const massastationProvider = allProviders.find(
-      (provider) => provider.name() === "MASSASTATION"
-    );
-
-    if (!massastationProvider) {
-      setErrorMessage("MASSASTATION provider not found");
-      return;
-    }
-
-    const accounts = await massastationProvider.accounts();
-    if (accounts.length === 0) {
-      setErrorMessage("No accounts found");
-      return;
-    }
-
-    const account = accounts[0];
-
-    const newClient = await ClientFactory.fromWalletProvider(
-      massastationProvider,
-      account
-    );
+    const newClient = await ClientFactory.createDefaultClient(DefaultProviderUrls.BUILDNET, CHAIN_ID.BuildNet);
 
     setClient(newClient);
   }
