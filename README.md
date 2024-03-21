@@ -42,7 +42,7 @@ Dans cette étape nous allons voir comment on peut sauvegarder des valeurs dans 
 
 Ajoutez la valeur 2 à la clé PRICE_KEY dans le stockage du smart-contract depuis la fonction `updatePrice()`.
 
-Pour convertir un nombre en bytes vous pouvez utiliser la fonction `u64ToBytes`.
+Pour convertir un nombre en string vous pouvez utiliser la fonction `.toString()`.
 Pour interagir avec le stockage utilisez notre objet `Storage` documentation : https://as-sdk.docs.massa.net/modules/Storage.html
 
 Une fois que vous pensez avoir une version fonctionnelle rendez-vous sur : https://massa-epitech-workshop.vercel.app/ . Entrez votre addresse et vous devriez voir le montant apparaitre après quelques secondes. Il est automatiquement récupéré sur la blockchain.
