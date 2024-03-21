@@ -13,7 +13,7 @@ Ensuite rendez-vous dans le dossier `contracts/` et lancez la commande pour inst
 npm i
 ```
 
-Le code du smart contract se situe dans `contracts/assembly/contracts/` dans le fichier `autonoumousprice.ts`. Il y a beaucoup de commentaire qui explique sont fonctionnement prenez-en connaissance.
+Le code du smart contract se situe dans `contracts/assembly/contracts/` dans le fichier `autonoumousprice.ts`. Il y a beaucoup de commentaires qui explique son fonctionnement prenez-en connaissance.
 
 Une fois les commentaires lus, si vous avez la moindre question/incompréhension demandez-moi :)
 Compilez le contrat avec la commande : 
@@ -23,7 +23,7 @@ npm run build
 
 Maintenant déployons ce premier smart contract sur le réseau builder de Massa appelé le : buildnet.
 
-Pour cela utilisez la clé privée `S12TmaQPEhf68M6Mb4xfXodkYjMgWKBoXdV17cpomVMUoAnFPaxf` et placez là dans le fichier `contracts/.env`. Cette clé est reliée à une addresse déjà provisionnée pour vous permettre de payer les coûts de déploiement du contrat sur la chaine. Pour le déployer utilisez la commande :
+Pour cela utilisez la clé privée `S12TmaQPEhf68M6Mb4xfXodkYjMgWKBoXdV17cpomVMUoAnFPaxf` et placez là dans le fichier `contracts/.env`. Cette clé est reliée à une addresse déjà provisionnée avec des coins pour vous permettre de payer les coûts de déploiement du contrat sur la chaine. Pour le déployer utilisez la commande :
 ```
 npm run deploy
 ```
@@ -31,14 +31,14 @@ npm run deploy
 Vous devriez avoir un événement affiché dans votre terminal avec des informations sur le déploiement de votre smart contract.
 Dans ces données vous pouvez récupérer l'addresse du smart contract dans la phrase : "Contract deployed at address: AS...".
 
-Rendez vous sur un de nos exploreurs : https://massexplo.io/ cliquez sur la planète en haut à droite pour passer sur le réseau buildnet et copiez l'addresse dans le champ de recherche. Il devrait vous trouvez l'addresse de votre contrat avec 1 MAS. Si ce n'est pas le cas, je viendrais vous aider :)
+Rendez vous sur un de nos exploreurs : https://massexplo.io/ cliquez sur la planète en haut à droite pour passer sur le réseau buildnet et copiez l'addresse dans le champ de recherche. Il devrait vous trouvez l'addresse de votre contrat avec 1 MAS. Si ce n'est pas le cas, dites-moi je viendrais vous aider :)
 
-Les contrats à Massa sont immutable par défaut ce qui signifie qu'ils ne sont pas modifiables par défaut.
+Les contrats à Massa sont immutable par défaut ce qui signifie qu'ils ne sont pas modifiables.
 A chaque fois que vous allez modifier le code durant ce workshop vous devrez re-compiler le contrat : `npm run build` et le rédeployer à nouvelle addresse avec `npm run deploy`.
 
 ### Étape 2 : Stockage du prix persistent
 
-Dans cette étape nous allons voir comment on peut sauvegarder des valeurs dans le stockage du smart contract pour qu'il puisse lu par les acteurs extérieur ou par les futures utilisations de fonctions du smart contract.
+Dans cette étape nous allons voir comment on peut sauvegarder des valeurs dans le stockage du smart contract pour qu'il puisse lu par les acteurs extérieur à la chaîne ou par les futures utilisations de fonctions du smart contract.
 
 Ajoutez la valeur 2 à la clé PRICE_KEY dans le stockage du smart-contract depuis la fonction `updatePrice()`.
 
@@ -54,6 +54,12 @@ Changez le code de l'étape 2 pour que la fonction mette un prix aléatoire entr
 La fonction `updatePrice` peut être appelé de manière régulière automatiquement en ajoutant un appel à `sendFutureOperation()` à la fin de la fonction.
 
 Verifiez que votre contrat fonctionne bien en utilisant le site : https://massa-epitech-workshop.vercel.app/ et en attendant les refresh. Il devrait se mettre à jour toutes les 16 secondes
+
+### Étape 4 : Variation de prix en fonction du prix actuel
+
+Changez le cote de l'étape 3, pour lui permettre de faire évoluer le prix en fonction d'un pourcentage. Pour cela récupérez la valeur du prix via le système de Storage présenté précedemment et utilisez l'aléatoire pour le faire varier de plusieurs pourcent à chaque appel à cette fonction.
+
+Utilisez le site : https://massa-epitech-workshop.vercel.app/ pour vérifier que tout fonctionne bien.
 
 ### La suite
 

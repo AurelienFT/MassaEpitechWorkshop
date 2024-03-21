@@ -22,7 +22,10 @@ export function constructor(_: StaticArray<u8>): StaticArray<u8> {
   // This line is important. It ensure that this function can't be called in the future.
   // If you remove this check someone could call your constructor function and reset your SC.
   assert(callerHasWriteAccess(), 'Caller is not allowed');
+
   Storage.set(COUNTER_KEY, "0");
+
+  // Appel de la fonction pour mettre à jour le prix du contrat.
   updatePrice(new StaticArray<u8>(0));
   return [];
 }
